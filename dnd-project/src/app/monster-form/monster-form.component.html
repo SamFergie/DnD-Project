@@ -1,0 +1,195 @@
+<div class="container-fluid w-75">
+    <h2>D&D Project</h2>
+    <br>
+    <form>
+        <h5>Key Monster Statistics:</h5>
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label m-1" for="hitpoints"><b>Hit Points:</b></label>
+                <input type="number" class="form-control" id="hitpoints" aria-label="Hit Points">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="ac"><b>Armour Class:</b></label>
+                <input type="number" class="form-control" id="ac" aria-label="Armour Class">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="size"><b>Size:</b></label>
+                <select class="form-control form-select" placeholder="Size:" id="size">
+                    <option>Tiny</option>
+                    <option>Small</option>
+                    <option selected>Medium</option>
+                    <option>Large</option>
+                    <option>Huge</option>
+                    <option>Gargantuan</option>
+                </select>              
+            </div>
+        </div>
+        <br>
+        <hr class="w-75 mx-auto">
+        <h5>Attribute Values:</h5>
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>STR:</b></label>
+                <input type="number" class="form-control" id="STR" aria-label="Strength">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>DEX:</b></label>
+                <input type="number" class="form-control" id="DEX" aria-label="Dexterity">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>CON:</b></label>
+                <input type="number" class="form-control" id="CON" aria-label="Constitution">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>INT:</b></label>
+                <input type="number" class="form-control" id="INT" aria-label="Intelligence">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>WIS:</b></label>
+                <input type="number" class="form-control" id="WIS" aria-label="Widsom">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="STR"><b>CON:</b></label>
+                <input type="number" class="form-control" id="CHA" aria-label="Charisma">
+            </div>
+        </div>
+        <br>
+        <hr class="w-75 mx-auto">
+        <h5>Saving Throws:</h5>
+        <div class="row">
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>STR Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>DEX Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>CON Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>INT Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>WIS Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col form-check m-2">
+                <label class="form-check-label" for="strSaveCheckbox"><b>CHA Save</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col form-check m-3">
+                <label class="form-check-label" for="Saving Throw Bonus"><b>Saving Throw Bonus:</b></label>
+                <input type="number" class="form-control" id="Saving Throw Bonus" aria-label="Saveing Throw Bonus">
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <br>
+        <hr class="w-75 mx-auto">
+        <h5>Movement Speeds:</h5>
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label m-1" for="Base Speed"><b>Base Speed:</b></label>
+                <input type="number" class="form-control" id="Base Speed" aria-label="Base Speed">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Fly Speed"><b>Fly Speed:</b></label>
+                <input type="number" class="form-control" id="Fly Speed" aria-label="Fly Speed">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Burrow "><b>Burrow Speed:</b></label>
+                <input type="number" class="form-control" id="Burrow Speed" aria-label="Burrow Speed">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Climb Speed"><b>Climb Speed:</b></label>
+                <input type="number" class="form-control" id="Climb Speed" aria-label="Climb Speed">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Swim Speed"><b>Swim Speed:</b></label>
+                <input type="number" class="form-control" id="Swim Speed" aria-label="Swim Speed">
+            </div>
+        </div>
+        <br>
+        <hr class="w-75 mx-auto">
+        <h5>Perception Information:</h5>
+        <div class="row align-items-end">
+            <div class="col">
+                <label class="form-check-label m-1" for="Passive Perception"><b>Passive Perception:</b></label>
+                <input type="number" class="form-control" id="Passive Perception" aria-label="Passive Perception">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Truesight Range"><b>Truesight Range (0 if none):</b></label>
+                <input type="number" class="form-control" id="Truesight Range" aria-label="Truesight">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Darkvision Range"><b>Darkvision Range (0 if none):</b></label>
+                <input type="number" class="form-control" id="Darkvision Range" aria-label="Darkvision">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Blindsight Range"><b>Blindsight Range (0 if none):</b></label>
+                <input type="number" class="form-control" id="Blindsight Range" aria-label="Blindsight">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Tremorsense Range"><b>Tremorsense Range (0 if none):</b></label>
+                <input type="number" class="form-control" id="Tremorsense Range" aria-label="Tremorsense">
+            </div>
+        </div>
+        <br>
+        <h5>Monster Abilities:</h5>
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label m-1" for="Passive Abilities"><b>Number of Passive Abilities:</b></label>
+                <input type="number" class="form-control" id="Passive Abilities" aria-label="Passive Abilities">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Number of Actions"><b>Number of Actions:</b></label>
+                <input type="number" class="form-control" id="Number of Actions" aria-label="Number of Actions">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Maximum Attack Bonus"><b>Maximum Attack Bonus:</b></label>
+                <input type="number" class="form-control" id="Maximum Attack Bonus" aria-label="Maximum Attack Bonus">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Maximum Damage"><b>Maximum Damage:</b></label>
+                <input type="number" class="form-control" id="Maximum Damage" aria-label="Maximum Damage">
+            </div>
+        </div>
+        <br>
+        <hr class="w-75 mx-auto">
+        <h5>Spellcasting:</h5>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col d-flex justify-content-center">
+                <label class="form-check-label" for="strSaveCheckbox"><b>Does the creature have spellcasting?</b></label>
+                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label class="form-check-label m-1" for="Number of Spells"><b>Number of Spells Known:</b></label>
+                <input type="number" class="form-control" id="Number of Spells" aria-label="Number of Spells">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Maximum Spell Level"><b>Maximum Spell Level:</b></label>
+                <input type="number" class="form-control" id="Maximum Spell Level" aria-label="Maximum Spell Level">
+            </div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Spell Save DC"><b>Spell Save DC:</b></label>
+                <input type="number" class="form-control" id="Spell Save DC" aria-label="Spell Save DC">
+            </div>
+        </div>
+        <br>
+    </form>
+</div>
