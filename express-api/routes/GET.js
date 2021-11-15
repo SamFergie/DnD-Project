@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const mongoose = require('mongoose');
-
-module.exports = router;
-
 
 //Obtain all the users in the collection
 router.get('/Users', async (req,res)=>{
@@ -26,3 +22,5 @@ router.get('/Users/:username', async (req,res)=>{
         res.json({message:err});
     }
 });
+
+module.exports = router;
