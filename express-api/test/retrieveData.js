@@ -3,16 +3,36 @@ const   expect = require('chai').expect,
         basicSetup = require('./basicSetup')
         app = require('../app');
 
-describe('GET:/ retreive all user information from database', () => {
+describe('GET:/ retrieve from the DB', () => {
     basicSetup();
 
-    it('existing data', (done)=>{
+    it('get all users', (done)=>{
         request(app).get('/GET/Users')
             .then((res) => {
                 expect(res.statusCode).to.equal(200);
-                console.log(res.body);
                 done();
             })
             .catch((err) => done(err))
+    })
+    it('get existing user', (done)=>{
+        request(app).get('/GET/Users/Sam')
+            .then((res) => {
+                expect(res.statusCode).to.equal(200);
+                done();
+            })
+            .catch((err) => {
+                done(err)
+            })
+    })
+    it('get not existing user', (done)=>{
+        request(app).get('/GET/Users/Bob')
+            .then((res) => {
+                expect(res.statusCode).to.equal(404);
+                expect(res.body).to.deep.equal({err:"data not found"});
+                done();
+            })
+            .catch((err) => {
+                done(err)
+            })
     })
 })

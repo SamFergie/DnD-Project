@@ -12,15 +12,15 @@ router.get('/Users', async (req,res)=>{
     }
 });
 router.get('/Users/:username', async (req,res)=>{
-    try{
-        const users = await User.findOne( { username: req.params.username } );
-        if(users == null){
-            res.status(404);
-        }
-        res.json(users);
-    }catch(err){
-        res.json({message:err});
-    }
-});
+    User.findOne( { username: req.params.username } )
+        .then((data) => {
+            if(data){
+                res.status(200).send(data)
+            }else{
+                res.status(404).send({err : "data not found"})
+            }
+        })
+        .catch((err) => res.status(500).send(err))
+})
 
 module.exports = router;

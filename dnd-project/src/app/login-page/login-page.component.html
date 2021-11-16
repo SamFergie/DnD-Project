@@ -1,32 +1,21 @@
 <div class="container-fluid w-75">
     <br>
-    <form>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col">
-                <h2>Login Page</h2>
-                <label class="form-check-label m-1" for="Username"><b>Username:</b></label>
-                <input type="text" class="form-control" id="Username" aria-label="Username">
-            </div>
-            <div class="col-3"></div>
+    <h2>Login</h2>
+    <br>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username" required>
+            <!-- <span class="text-danger" *ngIf="(loginFormControl.username && loginSubmitted) && loginFormControl.username.errors?.required">Username is required</span> -->
         </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Password"><b>Password:</b></label>
-                <input type="password" class="form-control" id="Password" aria-label="Password">
-            </div>
-            <div class="col-3"></div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" required>
+            <!-- <span class="text-danger" *ngIf="(loginFormControl.password && loginSubmitted) && loginFormControl.password.errors?.required">Password is required</span> -->
         </div>
-        <br>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            <div class="col-3"></div>
+        <!-- <span class="text-danger" *ngIf="loginFormControl.password.errors?.notCorrect">Re-check your username and password.</span> -->
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
-        
-        <br>
     </form>
 </div>
