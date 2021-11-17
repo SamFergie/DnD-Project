@@ -2,6 +2,7 @@ const   expect = require('chai').expect,
         request = require('supertest'),
         basicSetup = require('./basicSetup')
         app = require('../app');
+require('./postData');
 
 describe('GET:/ retrieve from the DB', () => {
     basicSetup();

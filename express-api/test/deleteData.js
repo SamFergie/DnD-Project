@@ -2,28 +2,26 @@ const   expect = require('chai').expect,
         request = require('supertest'),
         basicSetup = require('./basicSetup')
         app = require('../app');
+    require('./postData');
+    require('./retrieveData');
 
-describe('POST:/ retrieve and update DB', () => {
+describe('DELETE:/ delete exisiting user', () => {
     basicSetup();
 
-    it('register user', (done)=>{
+    it('delete existing user', (done)=>{
         request(app)
-            .post('/POST/register')
-            .send({"username": "Sam"})
-            .send({"password": "password"})
+            .delete('/DELETE/deleteUser/Sam')
             .then((res) => {
                 expect(res.statusCode).to.equal(200);
                 done();
             })
             .catch((err) => done(err))
     })
-    it('register exisiting user', (done)=>{
+    it('delete not existing user', (done)=>{
         request(app)
-            .post('/POST/register')
-            .send({"username": "Sam"})
-            .send({"password": "password"})
+            .delete('/DELETE/deleteUser/Sam')
             .then((res) => {
-                expect(res.statusCode).to.equal(409);
+                expect(res.statusCode).to.equal(404);
                 done();
             })
             .catch((err) => done(err))

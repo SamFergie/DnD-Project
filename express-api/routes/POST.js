@@ -14,11 +14,17 @@ const getHashedPassword = (password) => {
 router.post('/login', async (req,res)=>{
 });
 router.post('/register', async (req,res)=>{
-    // res.status(200).send("Hello");
-    const newUser = { username: req.body.username, password: getHashedPassword(req.body.password) };
-    console.log(newUser);
-    res.send(newUser);
-    res.status(200);
+    try{
+        const user = new User({
+            username: req.body.username,
+            password: getHashedPassword(req.body.password)
+        });
+        const savedUser = await user.save();
+        res.json(savedUser);
+        res.status(200);
+    }catch(err){
+        res.status(409).send("Username is already in use");
+    }
 })
 
 module.exports = router;

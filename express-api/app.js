@@ -14,9 +14,11 @@ mongooseConnect.dbconnect().on('error', (err) => console.log("Connection to DB f
 //Importing routes from routes(folder)
 const getroute = require('./routes/GET');
 const postroute = require('./routes/POST');
+const deleteroute = require('./routes/DELETE');
  
 app.use('/GET', getroute);
 app.use('/POST', postroute);
+app.use('/DELETE', deleteroute);
 
 app.listen(3000, () => console.log("server started at port 3000"));
 
