@@ -16,7 +16,7 @@ describe('GET:/ retrieve from the DB', () => {
             .catch((err) => done(err))
     })
     it('get existing user', (done)=>{
-        request(app).get('/GET/Users/Sam')
+        request(app).get('/GET/Users/Sam F')
             .then((res) => {
                 expect(res.statusCode).to.equal(200);
                 done();

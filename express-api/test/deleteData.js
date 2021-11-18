@@ -10,7 +10,7 @@ describe('DELETE:/ delete exisiting user', () => {
 
     it('delete existing user', (done)=>{
         request(app)
-            .delete('/DELETE/deleteUser/Sam')
+            .delete('/DELETE/deleteUser/Sam F')
             .then((res) => {
                 expect(res.statusCode).to.equal(200);
                 done();

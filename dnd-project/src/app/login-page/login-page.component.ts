@@ -26,15 +26,25 @@ export class LoginPageComponent implements OnInit {
         this.loginSubmitted = true;
         if(this.loginForm.valid){
             console.log("Logging In")
-            this._loginService.login(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).subscribe({
-                next: _ => { this.validSignIn(this.loginForm.controls['username'].value); },
-                error: _ => { this.loginForm.controls['password'].setErrors( {notCorrect: true}); }
-            });
+            try{
+                this._loginService.login(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).subscribe({
+                    next: _ => { this.validSignIn(this.loginForm.controls['username'].value); },
+                    error: _ => { this.loginForm.controls['password'].setErrors( {notCorrect: true}); }
+                });
+            }catch(error){
+                console.log(error);
+            }
         }
     }
 
-    validSignIn(accountEmail: any){
+    validSignIn(accountUsername: any){
         console.log("Valid Sign In");
+        console.log(accountUsername);
+    }
+
+    invalidSignIn(accountUsername: any){
+        console.log("Invalid Sign In");
+        console.log(accountUsername);
     }
 
 }

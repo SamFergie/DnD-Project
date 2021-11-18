@@ -12,6 +12,18 @@ const getHashedPassword = (password) => {
 
 //Obtain all the users in the collection
 router.post('/login', async (req,res)=>{
+    try{
+        User.findOne( { username: req.body.username, password: getHashedPassword(req.body.password) } )
+        .then((data) => {
+            if(data){
+                res.status(200).send(data)
+            }else{
+                res.status(404).send({err : "data not found"})
+            }
+        })
+    }catch(err){
+        res.status(404).send({err : "data not found"})
+    }
 });
 router.post('/register', async (req,res)=>{
     try{

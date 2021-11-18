@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { User } from '../models/User';
 
+const HttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,4 +25,11 @@ export class LoginandregService {
     }
     return this.http.post<any>(API_URL, userData, { observe: 'response' });
   }
+
+  getUser(username: string): Observable<any> {
+    console.log("Getting user");
+    let API_URL = `${this.REST_API}/GET/Users/${username}`;
+    // console.log(API_URL);
+    return this.http.get(API_URL, {observe: 'response', responseType: 'json'});
+}
 }

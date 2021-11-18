@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MonsterFormComponent } from './monster-form/monster-form.component';
+import { LoginandregService } from './services/loginandreg.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { MonsterFormComponent } from './monster-form/monster-form.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginandregService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
