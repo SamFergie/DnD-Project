@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Monster = require('../models/Monster');
 
 //Obtain all the users in the collection
 router.get('/Users', async (req,res)=>{

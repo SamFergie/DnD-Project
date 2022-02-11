@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Monster = require('../models/Monster');
 
 const crypto = require('crypto');
 
@@ -10,7 +11,7 @@ const getHashedPassword = (password) => {
     return hash;
 }
 
-//Obtain all the users in the collection
+//Obtain the user with the specified username and password
 router.post('/login', async (req,res)=>{
     try{
         User.findOne( { username: req.body.username, password: getHashedPassword(req.body.password) } )
@@ -37,6 +38,53 @@ router.post('/register', async (req,res)=>{
     }catch(err){
         res.status(409).send("Username is already in use");
     }
+})
+
+router.post('/addMonster', async (req,res)=>{
+    // Does the intended user exist
+    User.findOne( { username: req.body.owner } )
+        .then((data) => {
+            if(data){
+                // If yes, add the data
+                try{
+                    const monster = new Monster({
+                        owner: req.body.owner,
+                        name: req.body.name,
+                        predicted_cr: req.body.predicted_cr,
+                        hp: req.body.hp,
+                        ac: req.body.ac,
+                        base_speed: req.body.base_speed,
+                        fly_speed: req.body.fly_speed,
+                        burrow_speed: req.body.burrow_speed,
+                        swim_speed: req.body.swim_speed,
+                        climb_speed: req.body.climb_speed,
+                        STR: req.body.STR,
+                        DEX: req.body.DEX,
+                        CON: req.body.CON,
+                        INT: req.body.INT,
+                        WIS: req.body.WIS,
+                        CHA: req.body.CHA,
+                        passive_number: req.body.passive_number,
+                        action_number: req.body.action_number,
+                        max_damage: req.body.max_damage,
+                        max_bonus: req.body.max_bonus,
+                        legendary_number: req.body.legendary_number,
+                        immunity_number: req.body.immunity_number,
+                        resistance_number: req.body.resistance_number,
+                    });
+                    const savedMonster = monster.save();
+                    res.json(savedMonster);
+                    res.status(200);
+                }catch(err){
+                    // An error occured
+                    res.status(500).send(err);
+                }
+            }else{
+                // The user doesn't exist to output error
+                res.status(404).send({err : "data not found"})
+            }
+        })
+        .catch((err) => res.status(500).send(err))
 })
 
 module.exports = router;
