@@ -1,0 +1,11 @@
+html, body, div{
+    background-color: #973f41;
+}
+.padd-50{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.btn-red{
+    background-color: #B59E54;
+}

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <br>
+    <h2>Register Account</h2>
+    <br>
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username" required>
+            <!-- <span class="text-danger" *ngIf="(registerFormControl.username && loginSubmitted) && registerFormControl.username.errors?.required">Username is required</span> -->
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" required>
+            <!-- <span class="text-danger" *ngIf="(registerFormControl.password && loginSubmitted) && registerFormControl.password.errors?.required">Password is required</span> -->
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="password" required>
+            <!-- <span class="text-danger" *ngIf="(registerFormControl.password && loginSubmitted) && registerFormControl.password.errors?.required">Password is required</span> -->
+        </div>
+        <!-- <span class="text-danger" *ngIf="registerFormControl.password.errors?.notCorrect">Re-check your username and password.</span> -->
+        <div class="form-group mt-4">
+            <button type="submit" class="btn">Register</button>
+        </div>
+    </form>
+</div>

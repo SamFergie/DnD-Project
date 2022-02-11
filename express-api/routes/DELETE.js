@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 router.delete('/deleteUser/:username', async (req,res)=>{
     try{
-        const removeEvent = await User.deleteOne( { username: "Sam" } )
+        const removeEvent = await User.deleteOne( { username: req.params.username } )
         if(removeEvent.deletedCount == 0){
             res.status(404).send("Could not find user to delete");
         }else{

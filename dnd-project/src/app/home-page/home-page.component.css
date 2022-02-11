@@ -1,0 +1,17 @@
+html, body{
+    height: 100%;
+}
+
+.bg-purple, .bg-blue{
+    color: #B59E54;
+    background-color: #973f41;
+}
+
+.font-lg{
+    font-size: large;
+}
+
+.btn{
+    background-color: #B59E54;
+    height: 50px;
+}

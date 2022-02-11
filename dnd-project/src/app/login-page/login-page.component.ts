@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, NgControlStatusGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginandregService } from '../services/loginandreg.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +14,7 @@ export class LoginPageComponent implements OnInit {
     loginSubmitted = false;
     registerSubmitted = false;
 
-    constructor(private fb: FormBuilder, private _loginService: LoginandregService) {
+    constructor(private fb: FormBuilder, private _loginService: LoginandregService, private _cookieService: CookieService, private router: Router) {
         this.loginForm = this.fb.group({
             username: ['', Validators.compose([Validators.required])],
             password: ['', Validators.compose([Validators.required])]
@@ -37,9 +39,12 @@ export class LoginPageComponent implements OnInit {
         }
     }
 
-    validSignIn(accountUsername: any){
-        console.log("Valid Sign In");
-        console.log(accountUsername);
+    validSignIn(username: any){
+        // Set cookies
+        this._cookieService.set('signed-in', "true");
+        this._cookieService.set('username', username);
+        // Move to the monster registration page
+        this.router.navigate(["monster-form"]);
     }
 
     invalidSignIn(accountUsername: any){
