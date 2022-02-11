@@ -12,6 +12,8 @@ import { MonsterFormComponent } from './monster-form/monster-form.component';
 import { LoginandregService } from './services/loginandreg.service';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ViewMonstersComponent } from './view-monsters/view-monsters.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     LoginPageComponent,
     MonsterFormComponent,
     RegisterPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NavbarComponent,
+    ViewMonstersComponent,
   ],
   imports: [
     BrowserModule,

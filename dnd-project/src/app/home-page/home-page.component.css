@@ -3,8 +3,8 @@ html, body{
 }
 
 .bg-purple, .bg-blue{
-    color: #B59E54;
-    background-color: #973f41;
+    color: #E8F086;
+    background-color: #0A284B;
 }
 
 .font-lg{
@@ -15,3 +15,8 @@ html, body{
     background-color: #B59E54;
     height: 50px;
 }
+#skipButton{
+    background-color: #E8F086;
+}
+
+/* #E8F086, #0A284B, #0A284B, #A691AE, #235FA4, #0A284B */

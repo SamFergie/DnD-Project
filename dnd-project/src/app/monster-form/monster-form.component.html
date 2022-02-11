@@ -1,28 +1,21 @@
-<div class="container-fluid padd-50">
+<app-navbar></app-navbar>
+<div class="container-fluid">
     <h2>D&D Project</h2>
     <br>
     <form>
         <h5>Key Monster Statistics:</h5>
         <div class="row">
-            <div class="col">
+            <div class="col-1"></div>
+            <div class="col-4">
                 <label class="form-check-label m-1" for="hitpoints"><b>Hit Points:</b></label>
                 <input type="number" class="form-control" id="hitpoints" aria-label="Hit Points">
             </div>
-            <div class="col">
+            <div class="col-2"></div>
+            <div class="col-4">
                 <label class="form-check-label m-1" for="ac"><b>Armour Class:</b></label>
                 <input type="number" class="form-control" id="ac" aria-label="Armour Class">
             </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="size"><b>Size:</b></label>
-                <select class="form-control form-select" placeholder="Size:" id="size">
-                    <option>Tiny</option>
-                    <option>Small</option>
-                    <option selected>Medium</option>
-                    <option>Large</option>
-                    <option>Huge</option>
-                    <option>Gargantuan</option>
-                </select>              
-            </div>
+            <div class="col-1"></div>
         </div>
         <br>
         <hr class="w-75 mx-auto">
@@ -55,45 +48,6 @@
         </div>
         <br>
         <hr class="w-75 mx-auto">
-        <h5>Saving Throws:</h5>
-        <div class="row">
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>STR Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>DEX Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>CON Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>INT Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>WIS Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col form-check m-2">
-                <label class="form-check-label" for="strSaveCheckbox"><b>CHA Save</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3">
-            </div>
-            <div class="col form-check m-3">
-                <label class="form-check-label" for="Saving Throw Bonus"><b>Saving Throw Bonus:</b></label>
-                <input type="number" class="form-control" id="Saving Throw Bonus" aria-label="Saveing Throw Bonus">
-            </div>
-            <div class="col-3">
-            </div>
-        </div>
-        <br>
-        <hr class="w-75 mx-auto">
         <h5>Movement Speeds:</h5>
         <div class="row">
             <div class="col">
@@ -119,30 +73,6 @@
         </div>
         <br>
         <hr class="w-75 mx-auto">
-        <h5>Perception Information:</h5>
-        <div class="row align-items-end">
-            <div class="col">
-                <label class="form-check-label m-1" for="Passive Perception"><b>Passive Perception:</b></label>
-                <input type="number" class="form-control" id="Passive Perception" aria-label="Passive Perception">
-            </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Truesight Range"><b>Truesight Range (0 if none):</b></label>
-                <input type="number" class="form-control" id="Truesight Range" aria-label="Truesight">
-            </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Darkvision Range"><b>Darkvision Range (0 if none):</b></label>
-                <input type="number" class="form-control" id="Darkvision Range" aria-label="Darkvision">
-            </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Blindsight Range"><b>Blindsight Range (0 if none):</b></label>
-                <input type="number" class="form-control" id="Blindsight Range" aria-label="Blindsight">
-            </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Tremorsense Range"><b>Tremorsense Range (0 if none):</b></label>
-                <input type="number" class="form-control" id="Tremorsense Range" aria-label="Tremorsense">
-            </div>
-        </div>
-        <br>
         <h5>Monster Abilities:</h5>
         <div class="row">
             <div class="col">
@@ -164,34 +94,32 @@
         </div>
         <br>
         <hr class="w-75 mx-auto">
-        <h5>Spellcasting:</h5>
+        <h5>Legendary Monster:</h5>
         <div class="row">
-            <div class="col-3">
+            <div class="col-3"></div>
+            <div class="col">
+                <label class="form-check-label m-1" for="Legendry Actions"><b>Number of Legendary Actions:</b></label>
+                <input type="number" class="form-control" id="Legendry Actions" aria-label="Legendry Actions">
             </div>
-            <div class="col d-flex justify-content-center">
-                <label class="form-check-label" for="strSaveCheckbox"><b>Does the creature have spellcasting?</b></label>
-                <input class="form-check-input" type="checkbox" value="" id="strSaveCheckbox">
-            </div>
-            <div class="col-3">
-            </div>
+            <div class="col-3"></div>
         </div>
         <br>
+        <hr class="w-75 mx-auto">
+        <h5>Resistances and Immunities:</h5>
         <div class="row">
+            <div class="col-2"></div>
             <div class="col">
-                <label class="form-check-label m-1" for="Number of Spells"><b>Number of Spells Known:</b></label>
-                <input type="number" class="form-control" id="Number of Spells" aria-label="Number of Spells">
+                <label class="form-check-label m-1" for="Resistances"><b>Number of Resistances:</b></label>
+                <input type="number" class="form-control" id="Resistances" aria-label="Resistances">
             </div>
             <div class="col">
-                <label class="form-check-label m-1" for="Maximum Spell Level"><b>Maximum Spell Level:</b></label>
-                <input type="number" class="form-control" id="Maximum Spell Level" aria-label="Maximum Spell Level">
+                <label class="form-check-label m-1" for="Immunities"><b>Number of Immunities:</b></label>
+                <input type="number" class="form-control" id="Immunities" aria-label="Immunities">
             </div>
-            <div class="col">
-                <label class="form-check-label m-1" for="Spell Save DC"><b>Spell Save DC:</b></label>
-                <input type="number" class="form-control" id="Spell Save DC" aria-label="Spell Save DC">
-            </div>
+            <div class="col-2"></div>
         </div>
         <br>
-        <hr>
+        <hr class="w-75 mx-auto">
         <div class="col d-flex justify-content-center">
             <label class="form-check-label" for="accountSaveButton"><b>Save to account?</b></label>
             <input class="form-check-input" type="checkbox" value="" id="accountSaveButton">
@@ -208,4 +136,5 @@
         <br>
 
     </form>
+
 </div>
