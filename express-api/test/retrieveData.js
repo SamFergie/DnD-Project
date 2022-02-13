@@ -36,4 +36,24 @@ describe('GET:/ retrieve from the DB', () => {
                 done(err)
             })
     })
+    it('get existing users monsters', (done)=>{
+        request(app).get('/GET/Monsters/Sam F')
+            .then((res) => {
+                expect(res.statusCode).to.equal(200);
+                done();
+            })
+            .catch((err) => {
+                done(err)
+            })
+    })
+    it('get non existing users monsters', (done)=>{
+        request(app).get('/GET/Monsters/ABCDEF')
+            .then((res) => {
+                expect(res.statusCode).to.equal(404);
+                done();
+            })
+            .catch((err) => {
+                done(err)
+            })
+    })
 })

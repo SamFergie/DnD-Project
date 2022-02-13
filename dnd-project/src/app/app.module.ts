@@ -14,6 +14,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ViewMonstersComponent } from './view-monsters/view-monsters.component';
+import { MonstersPageComponent } from './monsters-page/monsters-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ViewMonstersComponent } from './view-monsters/view-monsters.component';
     HomePageComponent,
     NavbarComponent,
     ViewMonstersComponent,
+    MonstersPageComponent,
   ],
   imports: [
     BrowserModule,

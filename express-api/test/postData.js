@@ -93,15 +93,14 @@ describe('POST:/ retrieve and update DB', () => {
             })
             .catch((err) => done(err))
     })
-    it('add monster to non-existant user account', (done)=>{
+    it('add invalid monster', (done)=>{
         request(app)
             .post('/POST/addMonster')
-            .send({"owner": "ABCDEF"})
+            .send({"owner": "Sam F"})
             .send({"name": "Dragon"})
             .send({"predicted_cr": "2"})
             .send({"hp": "20"})
             .send({"ac": "12"})
-            .send({"base_speed": "30"})
             .send({"fly_speed": "35"})
             .send({"burrow_speed": "0"})
             .send({"swim_speed": "0"})
@@ -120,7 +119,7 @@ describe('POST:/ retrieve and update DB', () => {
             .send({"immunity_number": "1"})
             .send({"resistance_number": "2"})
             .then((res) => {
-                expect(res.statusCode).to.equal(404);
+                expect(res.statusCode).to.equal(500);
                 done();
             })
             .catch((err) => done(err))

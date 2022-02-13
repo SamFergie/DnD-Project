@@ -24,4 +24,17 @@ router.get('/Users/:username', async (req,res)=>{
         .catch((err) => res.status(500).send(err))
 })
 
+router.get('/Monsters/:username', async (req,res)=>{
+    Monster.find( { owner: req.params.username } )
+        .then((data) => {
+            if(data.length != 0){
+                res.status(200).send(data)
+            }else{
+                res.status(404).send({err : "data not found"})
+            }
+        })
+        .catch((err) => res.status(500).send(err))
+})
+
+
 module.exports = router;
