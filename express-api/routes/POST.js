@@ -66,17 +66,24 @@ router.post('/predictCR', async(req,res)=>{
             req.body.resistance_number
         ];
         const python = spawn('python', ['MLCaller.py', ...data]);
+        var outputData = "";
         python.stdout.on("data", (data) => {
-            res.json(data.toString());
+            console.log("Success:", data.toString());
+            outputData = data.toString();
             res.status(200);
         });
         python.stderr.on("data", (data) => {
-            res.json(data);
+            console.log("Failure:", data.toString());
+            outputData = data.toString();
             res.status(404);
         });
         python.on('close', (code) => {
             console.log("Close Stream", code);
+            console.log(outputData);
+            res.json(outputData);
+            res.send();
         });
+
     }catch(err){
         // An error occured
         res.status(500).send(err);
