@@ -2,10 +2,104 @@
 <div class="container-fluid h-100">
     <div class="row justify-content-center min-vh-100">
         <div class="col-2 no-float" style="background-color: black;">
-            <p>Hello</p>
+            <div class="card p-2" *ngFor="let monster of monsters" style="margin-top: 20px; background-color: white;">
+                    <p class="text-justify" style="color: black">{{monster.name}}</p>
+                    <button type="button" class="btn btn-primary" (click)="loadMonster(monster._id)">View Monster</button>
+            </div>
         </div>
         <div class="col-10 no-float" style="background-color: orange;">
-            <p>Hello</p>
+            <div class="container-fluid m-2 p-2" style="background-color: black;" *ngIf="monsterSelected">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Name: {{currentMonster.name}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p>Predicted CR: {{currentMonster.predicted_cr}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <p>HP: {{currentMonster.hp}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p>AC: {{currentMonster.ac}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <p>Base Speed: {{currentMonster.base_speed}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p>Fly Speed: {{currentMonster.fly_speed}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p>Burrow Speed: {{currentMonster.burrow_speed}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p>Swim Speed: {{currentMonster.swim_speed}}</p>
+                    </div>
+                    <div class="col-2">
+                        <p>Climb Speed: {{currentMonster.climb_speed}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <p>STR: {{currentMonster.STR}}</p>
+                    </div>
+                    <div class="col">
+                        <p>DEX: {{currentMonster.DEX}}</p>
+                    </div>
+                    <div class="col">
+                        <p>CON: {{currentMonster.CON}}</p>
+                    </div>
+                    <div class="col">
+                        <p>INT: {{currentMonster.INT}}</p>
+                    </div>
+                    <div class="col">
+                        <p>WIS: {{currentMonster.WIS}}</p>
+                    </div>
+                    <div class="col">
+                        <p>CHA: {{currentMonster.CHA}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <p>Number of Passive Abilities: {{currentMonster.passive_number}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Number of Actions: {{currentMonster.action_number}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Maximum Attack Damage: {{currentMonster.max_damage}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Maximum Attack Hit Bonus: {{currentMonster.max_bonus}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <p>Number of Legendary Actions: {{currentMonster.legendary_number}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Number of Immunities: {{currentMonster.immunity_number}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Number of Resistances: {{currentMonster.resistance_number}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <button class="btn btn-primary w-100" (click)="deleteMonster(currentMonster._id)">Delete Monster</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

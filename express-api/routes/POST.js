@@ -1,4 +1,5 @@
 const express = require('express');
+const {spawn} = require('child_process');
 const router = express.Router();
 const User = require('../models/User');
 const Monster = require('../models/Monster');
@@ -39,6 +40,49 @@ router.post('/register', async (req,res)=>{
         res.status(409).send("Username is already in use");
     }
 })
+router.post('/predictCR', async(req,res)=>{
+    try{
+        console.log("Adding Monster");
+        const data = [
+            req.body.hp,
+            req.body.ac,
+            req.body.base_speed,
+            req.body.fly_speed,
+            req.body.burrow_speed,
+            req.body.swim_speed,
+            req.body.climb_speed,
+            req.body.STR,
+            req.body.DEX,
+            req.body.CON,
+            req.body.INT,
+            req.body.WIS,
+            req.body.CHA,
+            req.body.passive_number,
+            req.body.action_number,
+            req.body.max_damage,
+            req.body.max_bonus,
+            req.body.legendary_number,
+            req.body.immunity_number,
+            req.body.resistance_number
+        ];
+        const python = spawn('python', ['MLCaller.py', ...data]);
+        python.stdout.on("data", (data) => {
+            res.json(data.toString());
+            res.status(200);
+        });
+        python.stderr.on("data", (data) => {
+            res.json(data);
+            res.status(404);
+        });
+        python.on('close', (code) => {
+            console.log("Close Stream", code);
+        });
+    }catch(err){
+        // An error occured
+        res.status(500).send(err);
+    }
+})
+
 
 router.post('/addMonster', async (req,res)=>{
     try{

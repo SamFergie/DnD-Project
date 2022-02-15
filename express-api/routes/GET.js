@@ -24,7 +24,8 @@ router.get('/Users/:username', async (req,res)=>{
         .catch((err) => res.status(500).send(err))
 })
 
-router.get('/Monsters/:username', async (req,res)=>{
+router.get('/MonstersByName/:username', async (req,res)=>{
+    console.log("Find By Owner");
     Monster.find( { owner: req.params.username } )
         .then((data) => {
             if(data.length != 0){
@@ -35,6 +36,20 @@ router.get('/Monsters/:username', async (req,res)=>{
         })
         .catch((err) => res.status(500).send(err))
 })
+
+router.get('/MonstersById/:id', async (req,res)=>{
+    console.log("Find By Id");
+    Monster.find( { _id: req.params.id } )
+        .then((data) => {
+            if(data.length != 0){
+                res.status(200).send(data)
+            }else{
+                res.status(404).send({err : "data not found"})
+            }
+        })
+        .catch((err) => res.status(500).send(err))
+})
+
 
 
 module.exports = router;

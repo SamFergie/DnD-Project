@@ -2,18 +2,18 @@
 <div class="container-fluid">
     <h2>D&D Project</h2>
     <br>
-    <form>
+    <form class="form" [formGroup]="monsterForm" (ngSubmit)="onSubmit()">
         <h5>Key Monster Statistics:</h5>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-4">
                 <label class="form-check-label m-1" for="hitpoints"><b>Hit Points:</b></label>
-                <input type="number" class="form-control" id="hitpoints" aria-label="Hit Points">
+                <input type="number" class="form-control" id="hitpoints" aria-label="Hit Points" formControlName="hitPoints" required>
             </div>
             <div class="col-2"></div>
             <div class="col-4">
                 <label class="form-check-label m-1" for="ac"><b>Armour Class:</b></label>
-                <input type="number" class="form-control" id="ac" aria-label="Armour Class">
+                <input type="number" class="form-control" id="ac" aria-label="Armour Class" formControlName="armourClass" required>
             </div>
             <div class="col-1"></div>
         </div>
@@ -23,27 +23,27 @@
         <div class="row">
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>STR:</b></label>
-                <input type="number" class="form-control" id="STR" aria-label="Strength">
+                <input type="number" class="form-control" id="STR" aria-label="Strength" formControlName="strength" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>DEX:</b></label>
-                <input type="number" class="form-control" id="DEX" aria-label="Dexterity">
+                <input type="number" class="form-control" id="DEX" aria-label="Dexterity" formControlName="dexterity" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>CON:</b></label>
-                <input type="number" class="form-control" id="CON" aria-label="Constitution">
+                <input type="number" class="form-control" id="CON" aria-label="Constitution" formControlName="constitution" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>INT:</b></label>
-                <input type="number" class="form-control" id="INT" aria-label="Intelligence">
+                <input type="number" class="form-control" id="INT" aria-label="Intelligence" formControlName="intelligence" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>WIS:</b></label>
-                <input type="number" class="form-control" id="WIS" aria-label="Widsom">
+                <input type="number" class="form-control" id="WIS" aria-label="Widsom" formControlName="wisdom" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="STR"><b>CON:</b></label>
-                <input type="number" class="form-control" id="CHA" aria-label="Charisma">
+                <input type="number" class="form-control" id="CHA" aria-label="Charisma" formControlName="charisma" required>
             </div>
         </div>
         <br>
@@ -52,23 +52,23 @@
         <div class="row">
             <div class="col">
                 <label class="form-check-label m-1" for="Base Speed"><b>Base Speed:</b></label>
-                <input type="number" class="form-control" id="Base Speed" aria-label="Base Speed">
+                <input type="number" class="form-control" id="Base Speed" aria-label="Base Speed" formControlName="baseSpeed" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Fly Speed"><b>Fly Speed:</b></label>
-                <input type="number" class="form-control" id="Fly Speed" aria-label="Fly Speed">
+                <input type="number" class="form-control" id="Fly Speed" aria-label="Fly Speed" formControlName="flySpeed" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Burrow "><b>Burrow Speed:</b></label>
-                <input type="number" class="form-control" id="Burrow Speed" aria-label="Burrow Speed">
+                <input type="number" class="form-control" id="Burrow Speed" aria-label="Burrow Speed" formControlName="burrowSpeed" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Climb Speed"><b>Climb Speed:</b></label>
-                <input type="number" class="form-control" id="Climb Speed" aria-label="Climb Speed">
+                <input type="number" class="form-control" id="Climb Speed" aria-label="Climb Speed" formControlName="climbSpeed" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Swim Speed"><b>Swim Speed:</b></label>
-                <input type="number" class="form-control" id="Swim Speed" aria-label="Swim Speed">
+                <input type="number" class="form-control" id="Swim Speed" aria-label="Swim Speed" formControlName="swimSpeed" required>
             </div>
         </div>
         <br>
@@ -77,19 +77,19 @@
         <div class="row">
             <div class="col">
                 <label class="form-check-label m-1" for="Passive Abilities"><b>Number of Passive Abilities:</b></label>
-                <input type="number" class="form-control" id="Passive Abilities" aria-label="Passive Abilities">
+                <input type="number" class="form-control" id="Passive Abilities" aria-label="Passive Abilities" formControlName="passiveNumber" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Number of Actions"><b>Number of Actions:</b></label>
-                <input type="number" class="form-control" id="Number of Actions" aria-label="Number of Actions">
+                <input type="number" class="form-control" id="Number of Actions" aria-label="Number of Actions" formControlName="actionNumber" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Maximum Attack Bonus"><b>Maximum Attack Bonus:</b></label>
-                <input type="number" class="form-control" id="Maximum Attack Bonus" aria-label="Maximum Attack Bonus">
+                <input type="number" class="form-control" id="Maximum Attack Bonus" aria-label="Maximum Attack Bonus" formControlName="maxAttackBonus" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Maximum Damage"><b>Maximum Damage:</b></label>
-                <input type="number" class="form-control" id="Maximum Damage" aria-label="Maximum Damage">
+                <input type="number" class="form-control" id="Maximum Damage" aria-label="Maximum Damage" formControlName="maxDamage" required>
             </div>
         </div>
         <br>
@@ -99,7 +99,7 @@
             <div class="col-3"></div>
             <div class="col">
                 <label class="form-check-label m-1" for="Legendry Actions"><b>Number of Legendary Actions:</b></label>
-                <input type="number" class="form-control" id="Legendry Actions" aria-label="Legendry Actions">
+                <input type="number" class="form-control" id="Legendry Actions" aria-label="Legendry Actions" formControlName="legendaryActions" required>
             </div>
             <div class="col-3"></div>
         </div>
@@ -110,11 +110,11 @@
             <div class="col-2"></div>
             <div class="col">
                 <label class="form-check-label m-1" for="Resistances"><b>Number of Resistances:</b></label>
-                <input type="number" class="form-control" id="Resistances" aria-label="Resistances">
+                <input type="number" class="form-control" id="Resistances" aria-label="Resistances" formControlName="resistancesNumber" required>
             </div>
             <div class="col">
                 <label class="form-check-label m-1" for="Immunities"><b>Number of Immunities:</b></label>
-                <input type="number" class="form-control" id="Immunities" aria-label="Immunities">
+                <input type="number" class="form-control" id="Immunities" aria-label="Immunities" formControlName="immunitiesNumber" required>
             </div>
             <div class="col-2"></div>
         </div>
@@ -122,7 +122,7 @@
         <hr class="w-75 mx-auto">
         <div class="col d-flex justify-content-center">
             <label class="form-check-label" for="accountSaveButton"><b>Save to account?</b></label>
-            <input class="form-check-input" type="checkbox" value="" id="accountSaveButton">
+            <input class="form-check-input" type="checkbox" value="" id="accountSaveButton" formControlName="saveClick">
         </div>
         <br>
         <div class="col-3">
