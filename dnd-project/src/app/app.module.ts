@@ -15,6 +15,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ViewMonstersComponent } from './view-monsters/view-monsters.component';
 import { MonstersPageComponent } from './monsters-page/monsters-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -25,15 +28,17 @@ import { MonstersPageComponent } from './monsters-page/monsters-page.component';
     HomePageComponent,
     NavbarComponent,
     ViewMonstersComponent,
-    MonstersPageComponent,
+    MonstersPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ModalModule
   ],
-  providers: [LoginandregService, CookieService],
+  providers: [LoginandregService, CookieService, BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

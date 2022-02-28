@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginandregService } from '../services/loginandreg.service';
 
@@ -8,11 +9,13 @@ import { LoginandregService } from '../services/loginandreg.service';
     styleUrls: ['./monsters-page.component.css']
 })
 export class MonstersPageComponent implements OnInit {
+    public found: boolean = false;
+
 
     public monsters: any;
     public monsterSelected: any;
     public currentMonster: any;
-    constructor(private _loginService: LoginandregService, private _cookieService: CookieService) {
+    constructor(private _loginService: LoginandregService, private _cookieService: CookieService, private router: Router) {
         this.monsterSelected = false;
     }
 
@@ -20,14 +23,14 @@ export class MonstersPageComponent implements OnInit {
         if(this._cookieService.get('signed-in') == "true"){
             try{
                 this._loginService.getMonsterOfUser(this._cookieService.get('username')).subscribe({
-                    next: data => { this.monsters = data.body; console.log(this.monsters); },
+                    next: data => { this.monsters = data.body; console.log(this.monsters); this.found = true; },
                     error: err => { console.log(err); }
                 });
             }catch(error){
                 console.log(error);
             }
         }else{
-            console.log("Not Signed In");
+            this.router.navigate(["/"]);
         }
     }
 
@@ -39,8 +42,11 @@ export class MonstersPageComponent implements OnInit {
     }
     deleteMonster(id: any){
         this._loginService.deleteMonsterOfid(id).subscribe({
-            next: data => { console.log(data); },
+            next: data => { window.location.reload(); },
             error: err => { console.log(err); }
         });
+    }
+    addNew(){
+        this.router.navigate(["/monster-form"]);
     }
 }

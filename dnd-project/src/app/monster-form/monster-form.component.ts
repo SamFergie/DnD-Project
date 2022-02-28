@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginandregService } from '../services/loginandreg.service';
 
@@ -10,11 +11,13 @@ import { LoginandregService } from '../services/loginandreg.service';
     styleUrls: ['./monster-form.component.css']
 })
 export class MonsterFormComponent implements OnInit {
-    monsterForm: FormGroup;
-    finalCRPrediction: Number;
 
-    constructor(private fb: FormBuilder, private _loginService: LoginandregService, private _cookieService: CookieService, private router: Router) {
-        this.finalCRPrediction = -1;
+    public modalRef?: BsModalRef;
+    monsterForm: FormGroup;
+    finalCRPrediction: any;
+
+    constructor(private ElByClassName: ElementRef, private fb: FormBuilder, private _loginService: LoginandregService, private _cookieService: CookieService, private router: Router, private modalService: BsModalService) {
+        this.finalCRPrediction = "Loading...";
         this.monsterForm = this.fb.group({
             name: ['', Validators.compose([Validators.required])],
             hitPoints: ['', Validators.compose([Validators.required])],
@@ -40,9 +43,11 @@ export class MonsterFormComponent implements OnInit {
             saveClick: [''],
         });
     }
+    openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template);
+    }
 
     ngOnInit(): void {
-        
     }
 
     onSubmit(){
@@ -86,7 +91,8 @@ export class MonsterFormComponent implements OnInit {
         console.log(parseInt(predictedCr));
         this.finalCRPrediction = parseInt(predictedCr);
         this.finalCRPrediction = this.parseCR(this.finalCRPrediction);
-        alert("Predicted CR: " + this.finalCRPrediction);
+        (document.querySelector('#predictedCRText') as HTMLElement).style.display = 'block';
+        (document.querySelector('#predictedCRWheel') as HTMLElement).style.display = 'none';
         if(this.monsterForm.controls['saveClick'].value){
             console.log("Save");
             this.addMonster(predictedCr);
@@ -97,10 +103,6 @@ export class MonsterFormComponent implements OnInit {
     addMonster(predictedCr: any){
         if(this._cookieService.get('signed-in') != 'true'){
             alert("You must be signed in to save your monster. Please create an account, or sign in.");
-            this.router.navigate(["home-page"]);
-        }else{
-            console.log(this._cookieService.get('signed-in'));
-            console.log(this._cookieService.get('username'));
         }
         var monsterData = {
             owner: this._cookieService.get('username'),

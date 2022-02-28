@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
+<main>
 <div class="container-fluid h-100">
-    <div class="row justify-content-center min-vh-100">
+    <div class="row justify-content-center min-vh-100" *ngIf="found==true">
         <div class="col-2 no-float" style="background-color:#0A284B;">
             <div class="card p-2" *ngFor="let monster of monsters" style="margin-top: 20px; background-color: white;">
                     <p class="text-justify" style="color: black">{{monster.name}}</p>
@@ -102,5 +103,11 @@
             </div>
         </div>
     </div>
-    
+    <div class="row text-justify justify-content-center bg-light" *ngIf="found==false">
+        <div class="col-12 text-center">
+            <h1 style="color: black;">No Monsters Found</h1>
+            <button class="btn btn-warning" (click)="addNew()">Add a New Monster</button>
+        </div>
+    </div>
 </div>
+</main>
