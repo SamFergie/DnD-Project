@@ -10,15 +10,6 @@ import matplotlib.pyplot as plt
 import pickle;
 import sys;
 
-# features =  [
-#             'HP', 'AC', 
-#             "Base Speed","Fly Speed","Burrow Speed","Swim Speed","Climb Speed", 
-#             'STR', "DEX","CON","INT","WIS","CHA", 
-#             "Number Of Passive Abilities","Number of Actions",
-#             'Max. Damage Roll', 'Max. Attack Bonus', 
-#             'Number of Legendary Actions', 
-#             'Number of Immunities', 'Number of Resistances'];
-
 clf: any;
 
 # Save model using pickle

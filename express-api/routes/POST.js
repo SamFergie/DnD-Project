@@ -43,7 +43,7 @@ router.post('/register', async (req,res)=>{
 router.post('/predictCR', async(req,res)=>{
     try{
         console.log("Adding Monster");
-        const data = [
+        var mlData = [
             req.body.hp,
             req.body.ac,
             req.body.base_speed,
@@ -65,7 +65,7 @@ router.post('/predictCR', async(req,res)=>{
             req.body.immunity_number,
             req.body.resistance_number
         ];
-        const python = spawn('python', ['MLCaller.py', ...data]);
+        const python = spawn('python', ['MLCaller.py', ...mlData]);
         var outputData = "";
         python.stdout.on("data", (data) => {
             console.log("Success:", data.toString());

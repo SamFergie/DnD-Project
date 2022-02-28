@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { LoginandregService } from '../services/loginandreg.service';
 
 @Component({
@@ -11,9 +13,10 @@ export class MonsterFormComponent implements OnInit {
     monsterForm: FormGroup;
     finalCRPrediction: Number;
 
-    constructor(private fb: FormBuilder, private _loginService: LoginandregService) {
+    constructor(private fb: FormBuilder, private _loginService: LoginandregService, private _cookieService: CookieService, private router: Router) {
         this.finalCRPrediction = -1;
         this.monsterForm = this.fb.group({
+            name: ['', Validators.compose([Validators.required])],
             hitPoints: ['', Validators.compose([Validators.required])],
             armourClass: ['', Validators.compose([Validators.required])],
             strength: ['', Validators.compose([Validators.required])],
@@ -39,6 +42,7 @@ export class MonsterFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        
     }
 
     onSubmit(){
@@ -66,7 +70,6 @@ export class MonsterFormComponent implements OnInit {
                 resistance_number: this.monsterForm.controls['resistancesNumber'].value,
             }
             try{
-                var predictedCr = "";
                 this._loginService.getCR(objectData).subscribe({
                     next: data => { this.gotCR(data.body); },
                     error: err => { console.log(err); }
@@ -83,16 +86,25 @@ export class MonsterFormComponent implements OnInit {
         console.log(parseInt(predictedCr));
         this.finalCRPrediction = parseInt(predictedCr);
         this.finalCRPrediction = this.parseCR(this.finalCRPrediction);
+        alert("Predicted CR: " + this.finalCRPrediction);
         if(this.monsterForm.controls['saveClick'].value){
+            console.log("Save");
             this.addMonster(predictedCr);
-        }else{
-            alert("Predicted CR: " + this.finalCRPrediction);
         }
     }
 
 
     addMonster(predictedCr: any){
+        if(this._cookieService.get('signed-in') != 'true'){
+            alert("You must be signed in to save your monster. Please create an account, or sign in.");
+            this.router.navigate(["home-page"]);
+        }else{
+            console.log(this._cookieService.get('signed-in'));
+            console.log(this._cookieService.get('username'));
+        }
         var monsterData = {
+            owner: this._cookieService.get('username'),
+            name: this.monsterForm.controls['name'].value,
             hp: this.monsterForm.controls['hitPoints'].value,
             predicted_cr: this.parseCR(predictedCr),
             ac: this.monsterForm.controls['armourClass'].value,
@@ -115,7 +127,10 @@ export class MonsterFormComponent implements OnInit {
             immunity_number: this.monsterForm.controls['immunitiesNumber'].value,
             resistance_number: this.monsterForm.controls['resistancesNumber'].value,
         }
-        console.log(monsterData);
+        this._loginService.addMonster(monsterData).subscribe({
+            next: data => { console.log("Added monster"); },
+            error: err => { console.log(err); }
+        });
     }
 
     parseCR(initialCr: any){

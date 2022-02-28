@@ -1,9 +1,17 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
-    <h2>D&D Project</h2>
     <br>
     <form class="form" [formGroup]="monsterForm" (ngSubmit)="onSubmit()">
-        <h5>Key Monster Statistics:</h5>
+        <h5>Key Monster Information:</h5>
+       <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <label class="form-check-label m-1" for="name"><b>Name:</b></label>
+                <input type="text" class="form-control" id="name" aria-label="Name" formControlName="name" required>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-4">
@@ -42,7 +50,7 @@
                 <input type="number" class="form-control" id="WIS" aria-label="Widsom" formControlName="wisdom" required>
             </div>
             <div class="col">
-                <label class="form-check-label m-1" for="STR"><b>CON:</b></label>
+                <label class="form-check-label m-1" for="STR"><b>CHA:</b></label>
                 <input type="number" class="form-control" id="CHA" aria-label="Charisma" formControlName="charisma" required>
             </div>
         </div>
