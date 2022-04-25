@@ -2,6 +2,8 @@ import numpy as np;
 import pandas as pd;
 import sklearn;
 from sklearn import metrics;
+from sklearn.preprocessing import PolynomialFeatures;
+from sklearn.pipeline import make_pipeline;
 from sklearn.model_selection import train_test_split;
 from sklearn.linear_model import LinearRegression;
 from sklearn.model_selection import cross_val_score
@@ -23,9 +25,11 @@ y = dataframe['CR'];
 # sn.heatmap(dataframe.corr(), annot=True)
 # plt.show()
 
+degree = 2
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3);
 
-clf = LinearRegression();
+clf = make_pipeline(PolynomialFeatures(degree), LinearRegression());
 
 clf = clf.fit(X_train, y_train);
 
@@ -56,9 +60,7 @@ while i < len(y_pred):
         print("-----------")
     i+=1;
 
-print("PM2: ", (pm2 / len(y_pred)));
-print("Exact: ", (successes / len(y_pred)));
-
+    
 print("R2: ", r2_score(y_test, y_pred));
 
 # Calculate adjusted R2
@@ -68,5 +70,8 @@ a = (1-r2_score(y_test, y_pred))
 b = (N-1) / (N-p-1)
 adj_rsquared = (1 - (a * b))
 print("Adjusted-R2 : " , adj_rsquared)
+
+print("PM2: ", (pm2 / len(y_pred)));
+print("Exact: ", (successes / len(y_pred)));
 
 print("RMS:", np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
